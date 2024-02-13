@@ -80,8 +80,8 @@ print(filtered_L8, 'Landsat 8 ST');
 // Create a funtion using Landsat scale factors for deriving ST in Kelvin and Celsius
 function applyScaleFactors(image) {
 // Select the thermal band and apply scale factors for converting to Kelvin and then Celsius
-  var thermalBands = image.select('ST_B10').multiply(0.00341802).add(149.0) // Scale factors for Kelvin
-  .subtract(273.15); // Scale factor for degrees Celsius
+  var thermalBands = image.select('ST_B10').multiply(0.00341802).add(149.0) 
+  .subtract(273.15);
   // Add the converted thermal band as a new band to the image and return it.
   return image.addBands(thermalBands, null, true);
 }
@@ -118,9 +118,7 @@ var chartOptions = {
   titleTextStyle: {
     fontSize: 15, 
     bold: true, 
-    textAlign: 'center', // center align the title
-    // add the following option to center the chart title vertically
-    // (adjust the value as needed)
+    textAlign: 'center', 
     top: '50%' 
   },
   subtitleTextStyle: {fontSize: 16, bold: false, textAlign: 'center'}
@@ -130,7 +128,6 @@ var chartOptions = {
 var histogram_ST_values = ui.Chart.image.histogram(values_ST, STUDYBOUNDS, 30)
   .setOptions(chartOptions); // add the chart options to the chart object
 
-// Use print statement to output the histogram values of mean ST to the console tab.
 print(histogram_ST_values);
 
 // Add the image to the map window, defining min/max values, a palette for 
